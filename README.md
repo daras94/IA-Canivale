@@ -1,5 +1,4 @@
-# IA-Canivales
-Practica UAH problema IA Canivales
+# IA-Canivales (Practica UAH problema IA)
 
 El problema de Misioneros y Caníbales en su versión clásica consiste en lo siguiente: 
 
