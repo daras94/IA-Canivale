@@ -1,10 +1,10 @@
 #lang racket
-(require (lib "setup/getinfo.rkt"))
+(require module-path ())
 (define (CanibalesYMisionero g)
   (let* ( ; Declaracion de variables.
          (actual    '())              ; Lista de nodos actuales el camino designado.
          (sucesores '())              ; Lista de sucesores
-         (abierto   '('(0 0 1 3 3)))   ; Lista de abiertos (My, Cy, B, Mx, Cx).
+         (abierto   '('(0 0 1 3 3)))  ; Lista de abiertos (My, Cy, B, Mx, Cx).
          (meta      '(3 3 0 0 0))
         ) 
         (while (not (eq?  meta (car abierto)))
@@ -12,4 +12,3 @@
         )
   )
 )
-
