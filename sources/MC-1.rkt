@@ -4,11 +4,9 @@
   (let* (;Declaramos las variables para las operacionesde trasicion que son posibles.
          (op_transicion (list (list 0 1 1  0 -1)  ; o1 = 1 canival se monata en la barca y no vuelve nadie.
                               (list 1 0 1 -1  0)  ; o2 = 1 misionero se monta en la barca y no vuelve nadie.
-                              (list 1 0 1 -2  0)  ; o3 = 2 canibales se montan en la barca y vuelve 1 canival.
-                              (list 0 1 1  0 -2)  ; o4 = 2 misioneros se montan en la barca y vuelve 1 misionero.
-                              (list 1 0 1 -1 -1)  ; o5 = 1 misionero y 1 canival se montan y vuelve 1 canival en la barca.
-                              (list 0 1 1 -1 -1)  ; o6 = 1 canival y 1 misionero se montan y vuelve un misonero en la barca.
-                              
+                              (list 2 0 1 -2  0)  ; o3 = 2 misioneros se montan en la barca y vuelve 1 misionero.
+                              (list 0 2 1  0 -2)  ; o4 = 2 canibales se montan en la barca y vuelve 1 canival.
+                              (list 1 0 1 -1 -1)  ; o5 = 1 misionero y 1 canival se montan y vuelve 1 canival en la barca.                              
                          ))
          (new_sucesor   (list null ))
         )
@@ -18,8 +16,8 @@
         (set! new_sucesor (map (lambda (l1 l2) (+ l1 l2)) (list-ref op_transicion num_op) nodo_actual))
         (printf " - Betta Sucesor ida a Y: ~v \n" new_sucesor)
         (if (and (>= (list-ref new_sucesor 4) 0)    (>= (list-ref new_sucesor 3) 0) (eq? (apply + new_sucesor) 7)
-                 (>= (list-ref new_sucesor 3)       (list-ref new_sucesor 4)))   ; validamos que Mx >= Cx en la orilla de partida.
-                 ;(>= (+ (list-ref new_sucesor 0) 1) (list-ref new_sucesor 1)))  ; validamos que My >= Cy en la orilla de partida.
+                 (>= (list-ref new_sucesor 3)       (list-ref new_sucesor 4))   ; validamos que Mx >= Cx en la orilla de partida.
+                 (>= (+ (list-ref new_sucesor 0) 1) (list-ref new_sucesor 1)))  ; validamos que My >= Cy en la orilla de partida.
             (append (suscesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
             (suscesores (+ num_op 1) nodo_actual)
         )]
