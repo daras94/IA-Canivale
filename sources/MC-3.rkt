@@ -1,15 +1,15 @@
 #lang racket
 (define (suscesores num_op nodo_actual)
   (let* (;Declaramos las variables para las operacionesde trasicion que son posibles.
-         (op_transicion (list (list 0 1 1  0 -1)  ; o0 = 1 canival se monata en la barca.
+         (op_transicion (list (list 0 1 1  0 -1)  ; o0 = 1 canibal se monata en la barca.
                               (list 1 0 1 -1  0)  ; o1 = 1 misionero se monta en la barca.
                               (list 2 0 1 -2  0)  ; o2 = 2 misioneros se montan en la barca.
                               (list 0 2 1  0 -2)  ; o3 = 2 canibales se montan en la barca.
-                              (list 1 1 1 -1 -1)  ; o4 = 1 misionero y 1 canival se montan en la barca.
+                              (list 1 1 1 -1 -1)  ; o4 = 1 misionero y 1 canibal se montan en la barca.
                               (list 3 0 1 -3  0)  ; o5 = 3 misioneros se montan en la barca.
                               (list 0 3 1  0 -3)  ; o6 = 3 canibales se montan en la barca.
-                              (list 1 2 1 -1 -2)  ; o7 = 1 misionero y 2 canival se montan en la barca.
-                              (list 2 1 1 -2 -1)  ; o8 = 2 misionero y 1 canival se montan en la barca.
+                              (list 1 2 1 -1 -2)  ; o7 = 1 misionero y 2 canibal se montan en la barca.
+                              (list 2 1 1 -2 -1)  ; o8 = 2 misionero y 1 canibal se montan en la barca.
                          ))
          (new_sucesor   (list null ))
         )
