@@ -1,7 +1,7 @@
 #lang racket
 
-(define (suscesores num_op nodo_actual)
-  (let* (;Declaramos las variables para las operacionesde trasicion que son posibles.
+(define (sucesores num_op nodo_actual)
+  (let* (;Declaramos las variables para las operaciones de trasicion que son posibles.
          (op_transicion (list (list 0 1 1  0 -1)  ; o1 = 1 canibal se monta en la barca.
                               (list 1 0 1 -1  0)  ; o2 = 1 misionero se monta en la barca.
                               (list 2 0 1 -2  0)  ; o3 = 2 misioneros se montan en la barca.
@@ -18,23 +18,23 @@
          (if (and (>= (list-ref new_sucesor 4) 0) (>= (list-ref new_sucesor 3) 0) (>= (list-ref new_sucesor 0) 0) (>= (list-ref new_sucesor 1) 0) (equal? (apply + new_sucesor) 7))
               (cond
                 [(and (equal? num_op 0) (or (>= (list-ref new_sucesor 0) (+ (list-ref new_sucesor 1)) 1) (equal? (list-ref new_sucesor 0) 0)))
-                 (append (suscesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
+                 (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
                 [(and (equal? num_op 3) (or (>= (list-ref new_sucesor 0) (+ (list-ref new_sucesor 1)) 2) (equal? (list-ref new_sucesor 0) 0)))
-                 (append (suscesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
+                 (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
                 [(and (equal? num_op 1) (and (or (>= (list-ref new_sucesor 3) (+ (list-ref new_sucesor 4)) 1) (equal? (list-ref new_sucesor 3) 1)) (>= (list-ref new_sucesor 0) (- (list-ref new_sucesor 1)) 1)))
-                 (append (suscesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
+                 (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
                 [(and (equal? num_op 2) (and (or (>= (list-ref new_sucesor 3) (+ (list-ref new_sucesor 4)) 2) (equal? (list-ref new_sucesor 3) 2)) (>= (list-ref new_sucesor 0) (- (list-ref new_sucesor 1)) 2)))
-                 (append (suscesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
+                 (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
                 [(and (equal? num_op 4) (>= (list-ref new_sucesor 0) (list-ref new_sucesor 1)))
-                 (append (suscesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
+                 (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
-                [else (suscesores (+ num_op 1) nodo_actual)] 
+                [else (sucesores (+ num_op 1) nodo_actual)] 
              )
-             (suscesores (+ num_op 1) nodo_actual)
+             (sucesores (+ num_op 1) nodo_actual)
           )
       ]
       [else empty] ; Finaliza la construcion de los sucesores.
@@ -70,7 +70,7 @@
              (printf "\n/*              -----> Nodo Actual: ~v: <-----              */ \n" (car actual))
              (printf "/**********************************************************************/\n")
              (printf " Actuales: ~v \n" actual)
-             (set! sucesor  (reverse (map (lambda (s1) (fun s1 (length actual))) (suscesores 0 (car actual)))))
+             (set! sucesor  (reverse (map (lambda (s1) (fun s1 (length actual))) (sucesores 0 (car actual)))))
              (printf " Sucesores: ~v \n" sucesor)
              (set! abiertos (sort (append (cdr abiertos) sucesor) #:key last <))
              (printf " Abiertos: ~v \n" abiertos)
