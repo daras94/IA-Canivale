@@ -32,19 +32,19 @@
                 [(and (equal? num_op 3) (or (>= (list-ref new_sucesor 0) (+ (list-ref new_sucesor 1)) 2) (equal? (list-ref new_sucesor 0) 0)))
                  (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
-                [(and (equal? num_op 4) (>= (list-ref new_sucesor 0) (list-ref new_sucesor 1)))
+                [(and (equal? num_op 4) (>= (list-ref new_sucesor 0) (list-ref new_sucesor 1)) (equal? (list-ref new_sucesor 0) 4) (equal? (list-ref new_sucesor 1) 4))
                  (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
-                [(and (equal? num_op 5) (and (or (>= (list-ref new_sucesor 3) (+ (list-ref new_sucesor 4)) 3) (equal? (list-ref new_sucesor 3) 3)) (>= (list-ref new_sucesor 0) (- (list-ref new_sucesor 1)) 3)))
+                [(and (equal? num_op 5) (and (or (>= (list-ref new_sucesor 3) (+ (list-ref new_sucesor 4)) 3) (equal? (list-ref new_sucesor 3) 2)) (>= (list-ref new_sucesor 0) (- (list-ref new_sucesor 1)) )))
                  (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
-                [(and (equal? num_op 6) (or (>= (list-ref new_sucesor 0) (+ (list-ref new_sucesor 1)) 3) (equal? (list-ref new_sucesor 0) 0)))
+                [(and (equal? num_op 6) (or (>= (list-ref new_sucesor 0) (+ (list-ref new_sucesor 1)) 3) (equal? (list-ref new_sucesor 0) 2)))
                  (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
                 [(and (equal? num_op 7)  (>= (list-ref new_sucesor 0) (list-ref new_sucesor 1)) (or (>= (list-ref new_sucesor 0) (+ (list-ref new_sucesor 1)) 2) (equal? (list-ref new_sucesor 0) 0)))
                  (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
-                [(and (equal? num_op 8)  (>= (list-ref new_sucesor 0) (list-ref new_sucesor 1)) (or (>= (list-ref new_sucesor 3) (+ (list-ref new_sucesor 4)) 2) (equal? (list-ref new_sucesor 3) 2)) (>= (list-ref new_sucesor 0) (- (list-ref new_sucesor 1)) 2))
+                [(and (equal? num_op 8)  (>= (list-ref new_sucesor 0) (list-ref new_sucesor 1)) (and (or (>= (list-ref new_sucesor 3) (+ (list-ref new_sucesor 4)) 2) (equal? (list-ref new_sucesor 3) 2)) (>= (list-ref new_sucesor 0) (- (list-ref new_sucesor 1)) 2)))
                  (append (sucesores (+ num_op 1) nodo_actual) (cons new_sucesor '()))
                  ]
                 [else (sucesores (+ num_op 1) nodo_actual)] 
